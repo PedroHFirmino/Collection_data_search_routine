@@ -1,0 +1,13 @@
+{
+  "name": "rotina-acervo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+  "start": "node src/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "mysql2": "^3.14.1"
+  }
+}
