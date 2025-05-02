@@ -3,7 +3,7 @@ const config = {
   user: 'root',
   password: '',
   server: 'localhost',
-  database: 'dbacervo',
+  database: 'Corpore',
 //   options: {
 //     encrypt: false,
 //     trustServerCertificate: true,
