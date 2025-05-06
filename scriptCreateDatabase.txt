@@ -1,0 +1,16 @@
+CREATE TABLE livros (
+  codPublic INT PRIMARY KEY,
+  titulo VARCHAR(255),
+  codEditora INT,
+  tombo VARCHAR(20),
+  nomeEditora VARCHAR(100),
+  edicao VARCHAR(50),
+  volume VARCHAR(50),
+  IDIMAGEM INT,
+  imagem TEXT,
+  autor VARCHAR(255),
+  qtdeCentro INT,
+  qtdeCampus INT,
+  qtdeDisponivel INT,
+  isReservado TINYINT
+);
