@@ -1,42 +1,15 @@
-const { buscaDadosAcervo} = require('../repository/acervo');
-const Corpore = requestIdleCallback('./config/databaseRM')
+const db = require('../config/integracao');
 
-async function exportar() {
-    const dados = await buscaDadosAcervo ();
-
-    const conn = await Corpore.getconnection();
-    try{
-        for (const item of dados) {
-            await conn.query(`
-        REPLACE INTO AcervoIntegrado (
-          codPublic, titulo, codEditora, tombo,
-          nomeEditora, edicao, volume, IDIMAGEM,
-          imagem, autor, qtdeCentro, qtdeCampus,
-          qtdeDisponivel, isReservado
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      `, [
-        item.codPublic,
-        item.titulo,
-        item.codEditora,
-        item.tombo,
-        item.nomeEditora,
-        item.edicao,
-        item.volume,
-        item.IDIMAGEM,
-        item.imagem,
-        item.autor,
-        item.qtdeCentro,
-        item.qtdeCampus,
-        item.qtdeDisponivel,
-        item.isReservado,
-      ]);
-        }
-    console.log(`Exportação concluída com $ {dados.lenght} registros.`);
-        } catch (err){
-    console.error(`Erro ao exportar`,err);
-        }finally{
-            conn.release();
-        }
+async function gravarAcervo(dados) {
+  for (const item of dados) {
+    console.log("Item keys:",Object.keys(item));
+    try {
+      await db.query('INSERT INTO livros SET ?', [item]);
+    } catch (err) {
+      console.error(`Erro ao inserir codPublic ${item.codPublic}:`, err.message);
+    }
+  }
+  console.log('Inserção concluída.');
 }
 
-module.exports = {exportar};
+module.exports = gravarAcervo;
