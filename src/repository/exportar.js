@@ -1,14 +1,15 @@
-const db = require('../config/integracao');
+const integracao = require('../config/integracao');
 
 async function gravarAcervo(dados) {
   for (const item of dados) {
-    console.log("Item keys:",Object.keys(item));
     try {
-      await db.query('INSERT INTO livros SET ?', [item]);
+      const {imagem, ...dadosSemImagem} = item;
+      await integracao.query('INSERT INTO livros SET ?', [dadosSemImagem]);
     } catch (err) {
       console.error(`Erro ao inserir codPublic ${item.codPublic}:`, err.message);
     }
   }
+
   console.log('Inserção concluída.');
 }
 
