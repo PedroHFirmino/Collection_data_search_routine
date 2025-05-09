@@ -4,7 +4,7 @@ async function gravarAcervo(dados) {
   for (const item of dados) {
     try {
       const {imagem, ...dadosSemImagem} = item;
-      await integracao.query('INSERT INTO livros SET ?', [dadosSemImagem]);
+      await integracao.query('INSERT INTO acervo-biblioteca SET ?', [dadosSemImagem]);
     } catch (err) {
       console.error(`Erro ao inserir codPublic ${item.codPublic}:`, err.message);
     }
