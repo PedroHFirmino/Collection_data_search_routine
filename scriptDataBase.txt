@@ -1,4 +1,4 @@
-CREATE DATABASE 
+CREATE DATABASE corpore
     DEFAULT CHARACTER SET = 'utf8mb4';
 
 use corpore
@@ -78,7 +78,26 @@ CREATE TABLE LRESERVA (
     DTHLIBERACAO DATETIME
 );
 
-CREATE integracao
+CREATE DATABASE integracao
     DEFAULT CHARACTER SET = 'utf8mb4';
 
 use integracao
+
+
+create Table acervoBiblioteca(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    codPublic INT NOT NULL,
+    titulo VARCHAR (255) NOT NULL,
+    codEditora int NOT NULL,
+    tombo INT,
+    nomeEditora VARCHAR (255) NOT NULL,
+    edicao VARCHAR (255),
+    volume VARCHAR (255) NULL,
+    IDIMAGEM INT,
+    imagem VARCHAR (255) NOT NULL,
+    autor VARCHAR (255) not NULL,
+    qtdeCentro INT,
+    qtdeCampus INT,
+    qtdeDisponivel INT,
+    isReservado INT
+);

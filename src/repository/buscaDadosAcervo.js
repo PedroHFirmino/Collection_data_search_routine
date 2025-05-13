@@ -79,15 +79,13 @@ JOIN LEXEMPLAR LEXEM ON P.CODCOLIGADA = LEXEM.CODCOLIGADA AND P.CODIGO = LEXEM.C
 LEFT JOIN LEDITORA EDIT ON P.EDITORA = EDIT.CODIGO
 LEFT JOIN LVOLUME V ON P.CODCOLIGADA = V.CODCOLIGADA AND P.CODIGO = V.CODPUBLIC AND LEXEM.CODVOL = V.CODIGO
 LEFT JOIN GIMAGEM IMG ON IMG.ID = P.IDIMAGEM
-WHERE EXISTS (
-    SELECT 1
-    FROM LSITUACAOEXEMPLAR S
-    WHERE S.CODSITUACAO = LEXEM.CODSITUACAO AND S.PERMITEEMP = 'T'
-)
 LIMIT 10;
     `);
-
-        return rows.recordset;
+    console.log('teste');
+    // console.log(rows.recordset);
+    console.log(rows);
+        // return rows.recordset;
+        return [];
   } catch (err) {
     console.error('Erro ao buscar dados:', err);
     return [];

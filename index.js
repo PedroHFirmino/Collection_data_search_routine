@@ -3,7 +3,8 @@ const gravarAcervo = require('./src/repository/exportar');
 
 async function executarRotina() {
     try{
-        const dados = await buscaDadosAcervo();
+        const dados = 
+        await buscaDadosAcervo();
         await salvarImagem(dados);
         await gravarAcervo (dados);
 
