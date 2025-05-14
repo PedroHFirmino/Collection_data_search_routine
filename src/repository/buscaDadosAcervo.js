@@ -81,11 +81,11 @@ LEFT JOIN LVOLUME V ON P.CODCOLIGADA = V.CODCOLIGADA AND P.CODIGO = V.CODPUBLIC 
 LEFT JOIN GIMAGEM IMG ON IMG.ID = P.IDIMAGEM
 LIMIT 10;
     `);
-    console.log('teste');
+    // console.log('teste');
     // console.log(rows.recordset);
     console.log(rows);
         // return rows.recordset;
-        return [];
+        return rows;
   } catch (err) {
     console.error('Erro ao buscar dados:', err);
     return [];

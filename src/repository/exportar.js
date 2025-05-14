@@ -1,16 +1,18 @@
 
-const integracao = require('../config/integracao');
+const config = require('../config/integracao');
+const mysql = require('mysql2/promise')
 
 
 //Busca dados acervo
-const buscaDadosAcervo = require('./buscaDadosAcervo');
+const {buscaDadosAcervo} = require('./buscaDadosAcervo');
 
 //Insert dos dados na tabela
 async function insertDados() {
   const dados = await buscaDadosAcervo();
     for (const item of dados) {
       try{
-      const [result] = await integracao.query('INSERT INTO acervoBiblioteca (codPublic, titulo, codEditora, tombo, nomeEditora, edicao, volume,IDIMAGEM, imagem, autor, qtdeCentro, qtdeCampus, qtdeDisponivel, isReservado) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,)',
+      const integracao = await mysql.createConnection(config);
+      const [result] = await integracao.query('INSERT INTO acervoBiblioteca (codPublic, titulo, codEditora, tombo, nomeEditora, edicao, volume,IDIMAGEM, imagem, autor, qtdeCentro, qtdeCampus, qtdeDisponivel, isReservado) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
       [ item.codPublic, 
         item.titulo, 
         item.codEditora, 
