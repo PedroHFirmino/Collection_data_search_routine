@@ -1,5 +1,5 @@
-const { buscaDadosAcervo, salvarImagem} = require('./src/repository/buscaDadosAcervo');
-const insertDados = require('./src/repository/exportar');
+const buscaDadosAcervo = require('./src/repository/buscaDadosAcervo');
+const {insertDados, salvarImagem} = require('./src/repository/exportar');
 
 async function executarRotina() {
     try{

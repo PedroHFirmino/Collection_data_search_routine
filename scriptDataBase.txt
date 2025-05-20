@@ -81,7 +81,7 @@ CREATE TABLE LRESERVA (
 CREATE DATABASE integracao
     DEFAULT CHARACTER SET = 'utf8mb4';
 
-use integracao
+use integracao;
 
 
 create Table acervoBiblioteca(
@@ -94,7 +94,7 @@ create Table acervoBiblioteca(
     edicao VARCHAR (255),
     volume VARCHAR (255) NULL,
     IDIMAGEM INT,
-    imagem VARCHAR (255) NOT NULL,
+    imagem VARCHAR (255) NULL,
     autor VARCHAR (255) not NULL,
     qtdeCentro INT,
     qtdeCampus INT,

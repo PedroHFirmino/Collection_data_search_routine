@@ -92,19 +92,5 @@ LIMIT 10;
   }
 }
 
-// Para salvar a imagem em JPG //
-async function salvarImagem(dadosImagem) {
-  const imagemBinaria = dadosImagem[0]?.imagem;
-  if (imagemBinaria) {
-    const nomeArquivo = 'imagem_salva_teste1.jpg';
-    fs.writeFileSync(nomeArquivo, imagemBinaria);
-    console.log(`Imagem salva como: ${nomeArquivo}`);
-  } else {
-    console.log('Nenhuma imagem disponível.');
-  }
-}
 
-module.exports = {
-  buscaDadosAcervo,
-  salvarImagem
-};
+module.exports = buscaDadosAcervo;

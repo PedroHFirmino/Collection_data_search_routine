@@ -3,8 +3,33 @@ const config = require('../config/integracao');
 const mysql = require('mysql2/promise')
 
 
-//Busca dados acervo
-const {buscaDadosAcervo} = require('./buscaDadosAcervo');
+// Busca dados acervo
+const buscaDadosAcervo = require('./buscaDadosAcervo');
+
+// Salvar imagem
+const fs = require('fs');
+const path = require('path');
+ 
+
+  async function salvarImagem(dados) {
+  // const images = dadosImagem[0]?.imagem;
+  const images = path.join(__dirname, 'images');
+  if (!fs.existsSync(images)) {
+    fs.mkdirSync(images, { recursive: true });
+  }
+  for (const item of dados){
+    if (item.imagem){  
+    const nomeArquivo = `imagem_${item.tombo || item.IDIMAGEM}.jpg`;
+    const caminho = path.join(images, nomeArquivo);
+    fs.writeFileSync(caminho, item.imagem);
+    item.imagem = `images/${nomeArquivo}`;
+    console.log(`Imagem salva como: ${nomeArquivo}`);
+  } else {
+    item.imagem = null;
+    console.log('Nenhuma imagem disponível.');
+  }
+}
+  }
 
 //Insert dos dados na tabela
 async function insertDados() {
@@ -37,17 +62,7 @@ async function insertDados() {
   }
 }
 
-module.exports = insertDados;
+module.exports = {
+  insertDados,
+  salvarImagem};
 
-//   // Salvar imagem
-
-//   async function salvarImagem(dadosImagem) {
-//   const imagemBinaria = dadosImagem[0]?.imagem;
-//   if (imagemBinaria) {
-//     const nomeArquivo = 'imagem_salva_teste1.jpg';
-//     fs.writeFileSync(nomeArquivo, imagemBinaria);
-//     console.log(`Imagem salva como: ${nomeArquivo}`);
-//   } else {
-//     console.log('Nenhuma imagem disponível.');
-//   }
-// }
