@@ -1,6 +1,7 @@
 const buscaDadosAcervo = require('./src/repository/buscaDadosAcervo');
 const {insertDados, salvarImagem} = require('./src/repository/exportar');
 
+
 async function executarRotina() {
     try{
         const dados = 
